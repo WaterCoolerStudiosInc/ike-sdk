@@ -1,0 +1,27 @@
+{
+  "name": "@water-cooler-studios/ike-sdk",
+  "version": "0.0.1",
+  "description": "SDK for ike contracts",
+  "author": "bgibers",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@polkadot/api": "^12",
+    "@polkadot/api-contract":"^12",
+    "@polkadot/types": "^12",
+    "@scio-labs/use-inkathon": "0.11.1",
+    "@water-cooler-studios/ike-contracts": "0.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.7",
+    "typescript": "5.6.3"
+  }
+}
