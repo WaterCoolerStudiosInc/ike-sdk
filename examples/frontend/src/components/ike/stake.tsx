@@ -97,13 +97,13 @@ export function Stake() {
             placeholder="Enter text here"
           />
           <br></br>
-          <strong>To Recieve: {stakeRatio} sAZERO</strong>
+          <strong>To Recieve: {stakeRatio} sA0</strong>
           <br></br>
           <Button type="submit">Submit</Button>
         </form>
 
         <div className="flex min-w-[10rem] items-center justify-center gap-2 rounded-2xl border bg-gray-900 px-4 py-3 font-mono text-sm font-bold text-foreground">
-          sAZERO balance = {shareTokenBalance}
+          sA0 balance = {shareTokenBalance}
         </div>
       </CardContent>
     </Card>

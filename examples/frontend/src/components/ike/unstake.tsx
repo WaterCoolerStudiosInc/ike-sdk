@@ -74,7 +74,7 @@ export function Unstake() {
   return (
     <Card>
       <CardContent className="pb-3 pt-6">
-        <h2 style={{ marginBottom: '1.5rem' }}>Request unlock of sAZERO</h2>
+        <h2 style={{ marginBottom: '1.5rem' }}>Request unlock of sA0</h2>
         <form onSubmit={handleStake}>
           <Input 
             type="number" 
