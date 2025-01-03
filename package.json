@@ -1,6 +1,6 @@
 {
   "name": "@water-cooler-studios/ike-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SDK for ike contracts",
   "author": "bgibers",
   "type": "module",
