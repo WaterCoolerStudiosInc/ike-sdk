@@ -6,6 +6,9 @@ import { TxParams } from './models/txParams'
 import { UnlockRequest, UserUnlockRequests } from './models/userUnlockRequest'
 import { getEraDurationMs } from './utils/eraInfo'
 
+import { GET_COMPOUND_ANALYTICS_WITH_LIMIT, getAllCompoundAnalyticsWithLimit } from './services/graphql/compoundAnalytics'
+import { calculateApy } from './utils/calculateApy'
+
 /**
  * https://docs.ike.xyz/the-ike-protocol/architecture/smart-contract-functions#unstaking-functions
  *
@@ -192,6 +195,82 @@ export class Vault {
   }
 
   /**
+   * Returns the total amount of AZERO bonded to the Vault
+   *
+   * @return {*}  {TxParams} - transaction params needed to call the IVault::get_total_pooled query   
+   * @memberof Vault
+   */
+  public getTotalPooledQuery(): TxParams {
+    const method = 'IVault::get_total_pooled'
+    const options = {} as ContractOptions
+    const args = []
+
+    return {
+      contract: this.vaultContract,
+      method: method,
+      options: options,
+      args: args
+    } as TxParams
+  }
+
+  /**
+   * Returns the total amount of shares in circulation
+   *
+   * @return {*}  {TxParams} - transaction params needed to call the IVault::get_total_shares query   
+   * @memberof Vault
+   */
+  public getTotalSharesQuery(): TxParams {
+    const method = 'IVault::get_total_shares'
+    const options = {} as ContractOptions
+    const args = []
+
+    return {
+      contract: this.vaultContract,
+      method: method,
+      options: options,
+      args: args
+    } as TxParams
+  }
+
+  /**
+   * Returns the fee percentage of the Vault
+   *
+   * @return {*}  {TxParams} - transaction params needed to call the IVault::get_fee_percentage query   
+   * @memberof Vault
+   */
+  public getFeePercentageQuery(): TxParams {
+    const method = 'IVault::get_fee_percentage'
+    const options = {} as ContractOptions
+    const args = []
+
+    return {
+      contract: this.vaultContract,
+      method: method,
+      options: options,
+      args: args
+    } as TxParams
+  }
+
+  /**
+   * Returns the current virtual shares of the Vault
+   *
+   * @return {*}  {TxParams} - transaction params needed to call the IVault::get_current_virtual_shares query   
+   * @memberof Vault
+   */
+  public getCurrentVirtualSharesQuery(): TxParams {
+    const method = 'IVault::get_current_virtual_shares'
+    const options = {} as ContractOptions
+    const args = []
+
+    return {
+      contract: this.vaultContract,
+      method: method,
+      options: options,
+      args: args
+    } as TxParams
+  }
+
+  /**
    * Returns the balance of SHARES an address holds
    *
    * @param {string} walletAddress
@@ -249,6 +328,16 @@ export class Vault {
       pendingUserUnlockRequests: pendingUserUnlockRequests,
       claimableUserUnlockRequests: claimableUserUnlockRequests
     } as UserUnlockRequests
+  }
+
+  /**
+ * @method get30DayApy
+ * @description Get the APY for the last 30 days. Mainnet only
+ * @returns {Promise<number>} The APY for the last 30 days
+ */
+  public async get30DayApy(): Promise<number> {
+    const data = await getAllCompoundAnalyticsWithLimit(30, 'https://graph.ike.xyz/azero')
+    return await calculateApy(data)
   }
 
   /**

@@ -1,6 +1,6 @@
 {
   "name": "@water-cooler-studios/ike-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "SDK for ike contracts",
   "author": "bgibers",
   "type": "module",
@@ -18,7 +18,9 @@
     "@polkadot/api-contract":"^12",
     "@polkadot/types": "^12",
     "@scio-labs/use-inkathon": "0.11.1",
-    "@water-cooler-studios/ike-contracts": "0.2.3"
+    "@water-cooler-studios/ike-contracts": "0.2.3",
+    "graphql-tag": "^2.12.6",
+    "graphql": "^16.10.0"
   },
   "devDependencies": {
     "@types/node": "22.7.7",

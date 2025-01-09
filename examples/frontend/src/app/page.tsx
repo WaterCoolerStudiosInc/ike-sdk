@@ -10,6 +10,7 @@ import { ConnectButton } from '@/components/web3/connect-button'
 import { Stake } from '@/components/ike/stake'
 import { Unstake } from '@/components/ike/unstake'
 import { UnlockRequests } from '@/components/ike/unlock-requests'
+import { AnalyticsPage } from '@/components/ike/analyticsPage'
 
 export default function HomePage() {
   // Display `useInkathon` error messages (optional)
@@ -24,7 +25,9 @@ export default function HomePage() {
       <div className="container relative flex grow flex-col items-center justify-center py-10">
         {/* Connect Wallet Button */}
         <ConnectButton />
-
+        <div className="mt-12 flex w-full flex-wrap items-start justify-center gap-4">
+          <AnalyticsPage />
+        </div>
         <div className="mt-12 flex w-full flex-wrap items-start justify-center gap-4">
           {/* Ike staking */}
           <Stake />
